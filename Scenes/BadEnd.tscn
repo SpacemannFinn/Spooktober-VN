@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/CG/cg_bad.png" type="Texture" id=1]
+
+[node name="Node2D" type="TextureRect"]
+texture = ExtResource( 1 )

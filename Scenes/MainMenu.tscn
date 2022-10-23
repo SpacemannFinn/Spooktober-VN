@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://UI/UI Assets/mainmenu_base.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/mousecursor.gd" type="Script" id=2]
+[ext_resource path="res://Font/Ubuntu-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scripts/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://UI/UI Assets/settings_button_hover.png" type="Texture" id=5]
+[ext_resource path="res://UI/UI Assets/settings_button.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=4]
+size = 80
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 80
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 80
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+font_data = ExtResource( 3 )
+
+[node name="Main Menu" type="TextureRect"]
+texture = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="Handler (Mouse)" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="start" type="RichTextLabel" parent="."]
+margin_left = 60.0
+margin_top = 445.0
+margin_right = 339.0
+margin_bottom = 538.0
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]START[/center]"
+text = "START"
+
+[node name="StartButton" type="TextureButton" parent="start"]
+margin_left = -2.0
+margin_top = -52.0
+margin_right = 280.0
+margin_bottom = 146.0
+
+[node name="load" type="RichTextLabel" parent="."]
+margin_left = 347.0
+margin_top = 445.0
+margin_right = 626.0
+margin_bottom = 548.0
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]LOAD[/center]"
+text = "LOAD"
+
+[node name="LoadButton" type="TextureButton" parent="load"]
+margin_left = -1.0
+margin_top = -52.0
+margin_right = 279.0
+margin_bottom = 145.0
+
+[node name="quit" type="RichTextLabel" parent="."]
+margin_left = 60.0
+margin_top = 652.0
+margin_right = 339.0
+margin_bottom = 745.0
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]QUIT[/center]"
+text = "QUIT"
+
+[node name="QuitButton" type="TextureButton" parent="quit"]
+margin_left = -3.0
+margin_top = -54.0
+margin_right = 280.0
+margin_bottom = 145.0
+
+[node name="settings" type="TextureButton" parent="."]
+margin_left = 406.0
+margin_top = 631.0
+margin_right = 567.0
+margin_bottom = 773.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+
+[node name="Credits" type="Control" parent="."]
+
+[node name="saltycryptid" type="RichTextLabel" parent="Credits"]
+margin_left = 292.0
+margin_top = 872.0
+margin_right = 585.0
+margin_bottom = 903.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "SALTYCRYPTID:"
+text = "SALTYCRYPTID:"
+
+[node name="Label" type="Label" parent="Credits/saltycryptid"]
+margin_left = 160.0
+margin_right = 286.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Lead + Artist"
+
+[node name="nen" type="RichTextLabel" parent="Credits"]
+margin_left = 292.0
+margin_top = 916.0
+margin_right = 562.0
+margin_bottom = 947.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_text = "NEN:"
+text = "NEN:"
+
+[node name="Label" type="Label" parent="Credits/nen"]
+margin_left = 55.0
+margin_right = 264.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Writer + Programmer"
+
+[node name="leaflet" type="RichTextLabel" parent="Credits"]
+margin_left = 292.0
+margin_top = 960.0
+margin_right = 560.0
+margin_bottom = 991.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_text = "LEAFLET:"
+text = "LEAFLET:"
+
+[node name="Label" type="Label" parent="Credits/leaflet"]
+margin_left = 98.0
+margin_right = 253.0
+margin_bottom = 26.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Audio Designer"
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 7 )]
+script = null
+
+[connection signal="mouse_entered" from="start/StartButton" to="." method="_on_StartButton_mouse_entered"]
+[connection signal="mouse_exited" from="start/StartButton" to="." method="_on_StartButton_mouse_exited"]
+[connection signal="pressed" from="start/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="mouse_entered" from="load/LoadButton" to="." method="_on_LoadButton_mouse_entered"]
+[connection signal="mouse_exited" from="load/LoadButton" to="." method="_on_LoadButton_mouse_exited"]
+[connection signal="mouse_entered" from="quit/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
+[connection signal="mouse_exited" from="quit/QuitButton" to="." method="_on_QuitButton_mouse_exited"]
+[connection signal="pressed" from="quit/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

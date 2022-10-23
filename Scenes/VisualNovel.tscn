@@ -1,0 +1,226 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Art/Backgrounds/bedroom_closed.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Control.gd" type="Script" id=2]
+[ext_resource path="res://Art/Sprites/expression_player_neutral.png" type="Texture" id=3]
+[ext_resource path="res://UI/UI Assets/dialogue_base.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/sprite_bestie_neutral.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/TextBox.gd" type="Script" id=8]
+[ext_resource path="res://Font/Ubuntu-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scripts/mousecursor.gd" type="Script" id=10]
+[ext_resource path="res://Font/Ubuntu-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://UI/UI Assets/choices_base_three.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/TextHover.gd" type="Script" id=13]
+
+[sub_resource type="DynamicFont" id=2]
+size = 66
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+font_data = ExtResource( 11 )
+
+[sub_resource type="StreamTexture" id=10]
+flags = 4
+load_path = "res://.import/dialogue_frame.png-e71af5bf29dcb9473818720a651b1e24.stex"
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends TextureRect
+
+func _on_TextureButton_pressed():
+	print(\"Button Pressed 1\")
+	pass # Replace with function body.
+
+
+func _on_TextureButton3_pressed():
+	print(\"Button Pressed 3\")
+	pass # Replace with function body.
+
+
+func _on_TextureButton2_pressed():
+	print(\"Button Pressed 2\")
+	pass # Replace with function body.
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 48
+font_data = ExtResource( 11 )
+
+[node name="VisualNovel" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Dialogue" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="BedroomClosed" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+scale = Vector2( 1, 0.999537 )
+texture = ExtResource( 1 )
+
+[node name="1" type="Position2D" parent="."]
+position = Vector2( 270, 709 )
+
+[node name="2" type="Position2D" parent="."]
+position = Vector2( 751, 709 )
+
+[node name="3" type="Position2D" parent="."]
+position = Vector2( 1279, 709 )
+
+[node name="4" type="Position2D" parent="."]
+position = Vector2( 1683, 709 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 18.8883
+margin_right = 58.8883
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Control"]
+position = Vector2( 1010.11, 552 )
+texture = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+margin_left = -67.0
+margin_top = -15.0
+margin_right = 1100.0
+margin_bottom = 618.0
+
+[node name="TextBox" type="TextureRect" parent="Control"]
+anchor_left = 3.22779
+anchor_top = 8.475
+anchor_right = 3.22779
+anchor_bottom = 8.475
+margin_left = 104.0
+margin_top = 413.0
+margin_right = 1725.0
+margin_bottom = 742.0
+rect_scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Control/TextBox"]
+margin_right = 505.0
+margin_bottom = 120.0
+custom_fonts/font = SubResource( 2 )
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Speaking" type="Sprite" parent="Control/TextBox"]
+position = Vector2( 327.994, 162.628 )
+scale = Vector2( 0.990072, 0.990072 )
+texture = ExtResource( 3 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextBox"]
+margin_left = 451.0
+margin_top = 24.0
+margin_right = 1582.0
+margin_bottom = 307.0
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tween" type="Tween" parent="Control/TextBox"]
+playback_speed = 2.0
+playback/speed = 2.0
+
+[node name="DialogueFrame" type="TextureRect" parent="Control/TextBox"]
+margin_top = -66.6666
+margin_right = 1621.0
+margin_bottom = 328.333
+texture = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Choices" type="TextureRect" parent="Control"]
+anchor_left = 1.22779
+anchor_top = 0.3
+anchor_right = 1.22779
+anchor_bottom = 0.3
+margin_left = 233.0
+margin_top = 138.0
+margin_right = 1596.0
+margin_bottom = 557.0
+texture = ExtResource( 12 )
+script = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Choice 1" type="RichTextLabel" parent="Control/Choices"]
+margin_left = 57.5
+margin_top = 20.5
+margin_right = 1315.5
+margin_bottom = 123.5
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+script = ExtResource( 13 )
+
+[node name="TextureButton" type="TextureButton" parent="Control/Choices/Choice 1"]
+margin_left = -46.0
+margin_top = -8.0
+margin_right = 1294.0
+margin_bottom = 110.0
+
+[node name="Choice 2" type="RichTextLabel" parent="Control/Choices"]
+margin_left = 50.5
+margin_top = 158.0
+margin_right = 1308.5
+margin_bottom = 261.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+script = ExtResource( 13 )
+
+[node name="TextureButton2" type="TextureButton" parent="Control/Choices/Choice 2"]
+margin_left = -40.0
+margin_top = -10.0
+margin_right = 1301.0
+margin_bottom = 112.0
+
+[node name="Choice 3" type="RichTextLabel" parent="Control/Choices"]
+margin_left = 54.5
+margin_top = 295.0
+margin_right = 1312.5
+margin_bottom = 398.0
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+script = ExtResource( 13 )
+
+[node name="TextureButton3" type="TextureButton" parent="Control/Choices/Choice 3"]
+margin_left = -43.0
+margin_top = -9.0
+margin_right = 1298.0
+margin_bottom = 113.0
+
+[connection signal="mouse_entered" from="Control/TextBox" to="Control/TextBox" method="_on_TextBox_mouse_entered"]
+[connection signal="mouse_exited" from="Control/TextBox" to="Control/TextBox" method="_on_TextBox_mouse_exited"]
+[connection signal="mouse_entered" from="Control/Choices/Choice 1/TextureButton" to="Control/Choices/Choice 1" method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Choices/Choice 1/TextureButton" to="Control/Choices/Choice 1" method="_on_TextureButton_mouse_exited"]
+[connection signal="pressed" from="Control/Choices/Choice 1/TextureButton" to="Control/Choices" method="_on_TextureButton_pressed"]
+[connection signal="mouse_entered" from="Control/Choices/Choice 2/TextureButton2" to="Control/Choices/Choice 2" method="_on_TextureButton2_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Choices/Choice 2/TextureButton2" to="Control/Choices/Choice 2" method="_on_TextureButton2_mouse_exited"]
+[connection signal="pressed" from="Control/Choices/Choice 2/TextureButton2" to="Control/Choices" method="_on_TextureButton2_pressed"]
+[connection signal="mouse_entered" from="Control/Choices/Choice 3/TextureButton3" to="Control/Choices/Choice 3" method="_on_TextureButton3_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Choices/Choice 3/TextureButton3" to="Control/Choices/Choice 3" method="_on_TextureButton3_mouse_exited"]
+[connection signal="pressed" from="Control/Choices/Choice 3/TextureButton3" to="Control/Choices" method="_on_TextureButton3_pressed"]

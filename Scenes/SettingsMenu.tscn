@@ -1,0 +1,312 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Scenes/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://UI/UI Assets/settings_base.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/TextHover.gd" type="Script" id=3]
+[ext_resource path="res://Font/Ubuntu-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/UI Assets/gamemenu_frame.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/ButtonPush.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/LabelHover.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Bars.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 55
+extra_spacing_top = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+load_path = "res://.import/slider_text_cover.png-5e014119cff7a6ad7b435ba68afeded3.stex"
+
+[sub_resource type="StreamTexture" id=10]
+flags = 4
+load_path = "res://.import/slider_text.png-bcd2b35c21668d7944391c17d7e1cc9e.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/slider_music_cover.png-cb75e81cd4c8738970f851c9208d66fb.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 4
+load_path = "res://.import/slider_music.png-58cbabf7518b21b92fb6785f8a5ff351.stex"
+
+[sub_resource type="StreamTexture" id=13]
+flags = 4
+load_path = "res://.import/slider_music_cover.png-cb75e81cd4c8738970f851c9208d66fb.stex"
+
+[sub_resource type="StreamTexture" id=14]
+flags = 4
+load_path = "res://.import/slider_music.png-58cbabf7518b21b92fb6785f8a5ff351.stex"
+
+[sub_resource type="DynamicFont" id=6]
+size = 110
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 100
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 90
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 55
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 70
+font_data = ExtResource( 4 )
+
+[node name="SettingsMenu" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MenuBG" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 2 )
+
+[node name="Frame" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 5 )
+
+[node name="Window Size" type="Control" parent="."]
+
+[node name="Fullscreen" type="RichTextLabel" parent="Window Size"]
+margin_left = 117.0
+margin_top = 334.0
+margin_right = 456.0
+margin_bottom = 403.0
+custom_colors/default_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "FULLSCREEN"
+text = "FULLSCREEN"
+script = ExtResource( 3 )
+
+[node name="FullScreen_Button" type="TextureButton" parent="Window Size/Fullscreen"]
+margin_left = -24.0
+margin_top = -6.0
+margin_right = 352.0
+margin_bottom = 72.0
+script = ExtResource( 6 )
+
+[node name="Windowed" type="RichTextLabel" parent="Window Size"]
+margin_left = 125.0
+margin_top = 420.0
+margin_right = 435.0
+margin_bottom = 485.0
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "WINDOWED"
+text = "WINDOWED"
+script = ExtResource( 3 )
+
+[node name="Windowed_Button" type="TextureButton" parent="Window Size/Windowed"]
+margin_left = -34.0
+margin_top = -7.0
+margin_right = 342.0
+margin_bottom = 68.0
+script = ExtResource( 6 )
+
+[node name="Bars" type="Control" parent="."]
+script = ExtResource( 8 )
+
+[node name="TextSpeedLevel" type="HBoxContainer" parent="Bars"]
+margin_left = 116.0
+margin_top = 642.0
+margin_right = 1805.0
+margin_bottom = 723.0
+
+[node name="TextureProgress" type="TextureProgress" parent="Bars/TextSpeedLevel"]
+margin_right = 1689.0
+margin_bottom = 81.0
+value = 100.0
+rounded = true
+texture_under = SubResource( 9 )
+texture_progress = SubResource( 10 )
+
+[node name="MusicLevel" type="HBoxContainer" parent="Bars"]
+margin_left = 419.0
+margin_top = 792.0
+margin_right = 1807.0
+margin_bottom = 873.0
+mouse_filter = 0
+
+[node name="MusicProgress" type="TextureProgress" parent="Bars/MusicLevel"]
+margin_right = 1388.0
+margin_bottom = 81.0
+mouse_filter = 0
+value = 100.0
+rounded = true
+texture_under = SubResource( 11 )
+texture_progress = SubResource( 12 )
+
+[node name="SFXLevel" type="HBoxContainer" parent="Bars"]
+margin_left = 418.0
+margin_top = 899.0
+margin_right = 1806.0
+margin_bottom = 980.0
+
+[node name="SFXProgress" type="TextureProgress" parent="Bars/SFXLevel"]
+margin_right = 1388.0
+margin_bottom = 81.0
+value = 100.0
+rounded = true
+texture_under = SubResource( 13 )
+texture_progress = SubResource( 14 )
+
+[node name="Labels" type="Control" parent="."]
+mouse_filter = 2
+
+[node name="X" type="Label" parent="Labels"]
+margin_left = 1700.0
+margin_top = 57.0
+margin_right = 1871.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "X"
+align = 1
+valign = 1
+script = ExtResource( 7 )
+
+[node name="XButton" type="TextureButton" parent="Labels/X"]
+margin_right = 172.0
+margin_bottom = 168.0
+script = ExtResource( 6 )
+
+[node name="Menu" type="Label" parent="Labels"]
+margin_left = 51.0
+margin_top = 57.0
+margin_right = 436.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 7 )
+text = "MENU"
+align = 1
+valign = 1
+
+[node name="MenuButton" type="TextureButton" parent="Labels/Menu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Setting" type="Label" parent="Labels"]
+modulate = Color( 0, 0.937255, 1, 1 )
+margin_left = 1127.0
+margin_top = 56.0
+margin_right = 1666.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "SETTING"
+align = 1
+valign = 1
+
+[node name="Save" type="Label" parent="Labels"]
+margin_left = 472.0
+margin_top = 56.0
+margin_right = 777.0
+margin_bottom = 222.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "SAVE"
+align = 1
+valign = 1
+
+[node name="SaveButton" type="TextureButton" parent="Labels/Save"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Load" type="Label" parent="Labels"]
+margin_left = 782.0
+margin_top = 56.0
+margin_right = 1090.0
+margin_bottom = 222.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "LOAD"
+align = 1
+valign = 1
+
+[node name="LoadButton" type="TextureButton" parent="Labels/Load"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Unclickable" type="Control" parent="Labels"]
+
+[node name="Next" type="Label" parent="Labels/Unclickable"]
+margin_left = 782.0
+margin_top = 328.0
+margin_right = 1159.0
+margin_bottom = 396.0
+custom_fonts/font = SubResource( 3 )
+text = "NEXT"
+align = 1
+valign = 1
+
+[node name="Interact" type="Label" parent="Labels/Unclickable"]
+margin_left = 1303.0
+margin_top = 328.0
+margin_right = 1680.0
+margin_bottom = 396.0
+custom_fonts/font = SubResource( 3 )
+text = "INTERACT"
+align = 1
+valign = 1
+
+[node name="Text Speed" type="Label" parent="Labels/Unclickable"]
+margin_left = 95.0
+margin_top = 547.0
+margin_right = 472.0
+margin_bottom = 615.0
+custom_fonts/font = SubResource( 3 )
+text = "TEXT SPEED"
+align = 1
+valign = 1
+
+[node name="Music" type="Label" parent="Labels/Unclickable"]
+margin_left = 99.0
+margin_top = 779.0
+margin_right = 385.0
+margin_bottom = 879.0
+custom_fonts/font = SubResource( 4 )
+text = "MUSIC"
+align = 1
+valign = 1
+
+[node name="SFX" type="Label" parent="Labels/Unclickable"]
+margin_left = 99.0
+margin_top = 886.0
+margin_right = 385.0
+margin_bottom = 985.0
+custom_fonts/font = SubResource( 5 )
+text = "SFX"
+align = 1
+valign = 1
+
+[connection signal="mouse_entered" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen" method="_on_FullScreen_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen" method="_on_FullScreen_Button_mouse_exited"]
+[connection signal="pressed" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen/FullScreen_Button" method="_on_FullScreen_Button_pressed"]
+[connection signal="mouse_entered" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed" method="_on_Windowed_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed" method="_on_Windowed_Button_mouse_exited"]
+[connection signal="pressed" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed/Windowed_Button" method="_on_Windowed_Button_pressed"]
+[connection signal="mouse_entered" from="Bars/TextSpeedLevel/TextureProgress" to="Bars" method="_on_TextureProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Bars/TextSpeedLevel/TextureProgress" to="Bars" method="_on_TextureProgress_mouse_exited"]
+[connection signal="mouse_entered" from="Bars/MusicLevel/MusicProgress" to="Bars" method="_on_MusicProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Bars/MusicLevel/MusicProgress" to="Bars" method="_on_MusicProgress_mouse_exited"]
+[connection signal="mouse_entered" from="Bars/SFXLevel/SFXProgress" to="Bars" method="_on_SFXProgress_mouse_entered"]
+[connection signal="mouse_exited" from="Bars/SFXLevel/SFXProgress" to="Bars" method="_on_SFXProgress_mouse_exited"]
+[connection signal="mouse_entered" from="Labels/X/XButton" to="Labels/X" method="_on_XButton_mouse_entered"]
+[connection signal="mouse_exited" from="Labels/X/XButton" to="Labels/X" method="_on_XButton_mouse_exited"]
+[connection signal="pressed" from="Labels/X/XButton" to="Labels/X/XButton" method="_on_XButton_pressed"]
