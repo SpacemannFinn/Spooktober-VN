@@ -3,11 +3,6 @@
 [ext_resource path="res://UI/UI Assets/scrollvertical_bar.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends Control
-
-func _ready():
-	rect_min_size.y = 0.5
-"
 
 [resource]
 texture = ExtResource( 1 )

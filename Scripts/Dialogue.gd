@@ -26,8 +26,8 @@ var dialogue_1 = [
 		"Name": "Alice",
 		"Expression": "Scared",
 		"Position": "4",
-		"Choices": ["46", "54", ""],
-		"Text": "Lysanderoth?!",
+		"Choices": ["", "", ""],
+		"Text": "Lysanderoth?! you were behind this",
 	},
 	{
 		"Name": "Bob",
@@ -47,7 +47,7 @@ var dialogue_1 = [
 		"Name": "Bob",
 		"Expression": "Sad",
 		"Position": "2",
-		"Choices": ["", "", ""],
+		"Choices": ["Egg", "Al", "Greg"],
 		"Text": "Everyday I cry",
 	},
 ]

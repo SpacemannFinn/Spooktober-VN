@@ -11,6 +11,3 @@ func _input(delta):
 		Input.set_custom_mouse_cursor(mouseUnclicked, 0, Vector2(0, 0))
 	
 
-
-func _on_SFXProgress_mouse_entered():
-	pass # Replace with function body.

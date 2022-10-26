@@ -28,18 +28,30 @@ load_path = "res://.import/dialogue_frame.png-e71af5bf29dcb9473818720a651b1e24.s
 [sub_resource type="GDScript" id=9]
 script/source = "extends TextureRect
 
+onready var global = get_node(\"/root/global\")
+onready var pauseDialogue = global.pauseDialogue
+
 func _on_TextureButton_pressed():
 	print(\"Button Pressed 1\")
+	pauseDialogue = false
+	get_parent().load_dialogue()
+	print(\"pauseDialogue\", pauseDialogue)
 	pass # Replace with function body.
 
 
 func _on_TextureButton3_pressed():
 	print(\"Button Pressed 3\")
+	pauseDialogue = false
+	get_parent().load_dialogue()
+	print(\"pauseDialogue\", pauseDialogue)
 	pass # Replace with function body.
 
 
 func _on_TextureButton2_pressed():
 	print(\"Button Pressed 2\")
+	pauseDialogue = false
+	get_parent().load_dialogue()
+	print(\"pauseDialogue\", pauseDialogue)
 	pass # Replace with function body.
 "
 

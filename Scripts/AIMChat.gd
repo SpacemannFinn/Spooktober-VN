@@ -1,4 +1,5 @@
-extends Control
+extends TextureRect
+
 
 onready var text = get_parent().get_node("Dialogue").dialogue_1
 onready var global = get_node("/root/global")
@@ -108,3 +109,8 @@ func load_dialogue():
 
 func _on_Tween_tween_completed(object, key):
 	finished = true
+
+func _on_Exit_pressed():
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Scenes/VisualNovel.tscn")
+	pass # Replace with function body.
