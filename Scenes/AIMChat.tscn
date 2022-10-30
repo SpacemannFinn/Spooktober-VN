@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/UI Assets/aim_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/AIMChat.gd" type="Script" id=2]
@@ -20,10 +20,6 @@ VScrollBar/styles/grabber_highlight = ExtResource( 5 )
 VScrollBar/styles/grabber_pressed = ExtResource( 5 )
 VScrollBar/styles/scroll = ExtResource( 4 )
 VScrollBar/styles/scroll_focus = ExtResource( 4 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 34
-font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=13]
 VScrollBar/styles/grabber = null
@@ -59,38 +55,6 @@ scroll_horizontal_enabled = false
 margin_right = 984.0
 margin_bottom = 445.0
 rect_min_size = Vector2( 984, 445 )
-
-[node name="UserLabel" type="RichTextLabel" parent="Chat/VBoxContainer"]
-margin_right = 984.0
-margin_bottom = 120.0
-custom_fonts/normal_font = SubResource( 11 )
-bbcode_enabled = true
-bbcode_text = "[color=#252FAA]Username:[/color] [color=#0a0404]a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h   [/color]"
-text = "Username: a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h i j k l m n o p q r s t u v w x y z a b c d e f g h   "
-fit_content_height = true
-scroll_active = false
-
-[node name="NPCLabel" type="RichTextLabel" parent="Chat/VBoxContainer"]
-margin_top = 124.0
-margin_right = 984.0
-margin_bottom = 244.0
-custom_fonts/normal_font = SubResource( 11 )
-bbcode_enabled = true
-bbcode_text = "[color=#B21E55]Username:[/color] [color=#0a0404]Pack my bags with five dozen liquor jugs. I'll be waiting to find what you're speaking of. Have you ever been inside that ol' fishery[/color]"
-text = "Username: Pack my bags with five dozen liquor jugs. I'll be waiting to find what you're speaking of. Have you ever been inside that ol' fishery"
-fit_content_height = true
-scroll_active = false
-
-[node name="UserLabel2" type="RichTextLabel" parent="Chat/VBoxContainer"]
-margin_top = 248.0
-margin_right = 984.0
-margin_bottom = 288.0
-custom_fonts/normal_font = SubResource( 11 )
-bbcode_enabled = true
-bbcode_text = "[color=#252FAA]Username:[/color] [color=#0a0404]Pack my bags with five dozen liquor jugs.[/color]"
-text = "Username: Pack my bags with five dozen liquor jugs."
-fit_content_height = true
-scroll_active = false
 
 [node name="Tween" type="Tween" parent="Chat"]
 

@@ -51,3 +51,33 @@ var dialogue_1 = [
 		"Text": "Everyday I cry",
 	},
 ]
+
+var after_choice_1 = [
+	{
+		"Name": "Alice",
+		"Expression": "Neutral",
+		"Choices": ["", ""],
+		"Text": "W-What!",
+	},
+	{
+		"Name": "Bob",
+		"Expression": "Neutral",
+		"Choices": ["", ""],
+		"Text": "Hot dog Hot diggity dog!",
+	},
+]
+
+var after_choice_2 = [
+	{
+		"Name": "Alice",
+		"Expression": "Neutral",
+		"Choices": ["", ""],
+		"Text": "Noo!",
+	},
+	{
+		"Name": "Bob",
+		"Expression": "Neutral",
+		"Choices": ["", ""],
+		"Text": "Mickey Mouse Clubhouse!",
+	},
+]

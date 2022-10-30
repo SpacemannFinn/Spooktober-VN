@@ -20,14 +20,8 @@ func _physics_process(delta):
 	if active:
 		# If the player presses the spacebar, the dialogue will continue
 		if Input.is_action_just_pressed("ui_accept"):
-			if finished == true:
-				if pauseDialogue == false:
-					load_dialogue()
-			else:
-				if pauseDialogue == false: # If the dialogue is not paused, the dialogue will continue
-					#$TextBox/Tween.stop_all()
-					#$TextBox/RichTextLabel.percent_visible = 1
-					finished = true
+			if pauseDialogue == false:
+				load_dialogue()
 		
 		#This is the code that determines what choices show up
 		if $"Choice Box/AIMChoices/Choice 1".text == "":
@@ -70,13 +64,13 @@ func load_dialogue():
 		choiceArray = text[dialogue_index]["Choices"] #This is to make sure that the code knows what choices to display based on the contents of the dialogue node
 		
 		#This is the code that controls the transition between dialogue box contents
-		newNPCChatBox().percent_visible = 0
-		$Chat/Tween.interpolate_property(
-		newNPCChatBox(), "percent_visible", 0, 1, 2,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
-		)
+		newNPCLabel.percent_visible = 1
+		#$Chat/Tween.interpolate_property(
+		#	newNPCLabel, "percent_visible", 0, 1, 2,
+		#	Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+		#)
 		
-		$Chat/Tween.start()
+		#$Chat/Tween.start()
 	else:
 		#$TextBox.visible = false
 		finished = true
