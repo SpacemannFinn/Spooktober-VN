@@ -7,7 +7,7 @@ onready var dict = global.readJSON("res://Dialog/main.json")
 export(String) var start_id
 
 var previous
-var current
+var current1
 var active
 var finished
 
