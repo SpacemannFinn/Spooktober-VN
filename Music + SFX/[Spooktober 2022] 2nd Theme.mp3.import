@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/[Spooktober 2022] 2nd Theme.mp3-713c7d914a6aff7741395aa95f135a5d.mp3str"
+
+[deps]
+
+source_file="res://Music + SFX/[Spooktober 2022] 2nd Theme.mp3"
+dest_files=[ "res://.import/[Spooktober 2022] 2nd Theme.mp3-713c7d914a6aff7741395aa95f135a5d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

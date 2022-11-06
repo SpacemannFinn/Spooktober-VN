@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/window_close.wav-5ca50da420a102a4c991a404b5b33887.sample"
+
+[deps]
+
+source_file="res://Music + SFX/Spooktober 2022 SFX/window_close.wav"
+dest_files=[ "res://.import/window_close.wav-5ca50da420a102a4c991a404b5b33887.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

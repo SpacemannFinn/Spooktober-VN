@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/UI Assets/aim_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/AIMChat.gd" type="Script" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://UI/UI Assets/scroll.tres" type="StyleBox" id=4]
 [ext_resource path="res://UI/UI Assets/scrollbar.tres" type="StyleBox" id=5]
 [ext_resource path="res://Scripts/TextHover.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=7]
-[ext_resource path="res://Font/AIMChat.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -25,12 +23,22 @@ VScrollBar/styles/scroll_focus = ExtResource( 4 )
 VScrollBar/styles/grabber = null
 VScrollBar/styles/scroll = null
 
+[sub_resource type="DynamicFont" id=14]
+size = 34
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 34
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 34
+font_data = ExtResource( 3 )
+
 [node name="AIM" type="TextureRect"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-
-[node name="Dialogue" type="Node" parent="."]
-script = ExtResource( 7 )
+start_id = "ROOM"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 585.0
@@ -56,8 +64,6 @@ margin_right = 984.0
 margin_bottom = 445.0
 rect_min_size = Vector2( 984, 445 )
 
-[node name="Tween" type="Tween" parent="Chat"]
-
 [node name="Choice Box" type="ScrollContainer" parent="."]
 margin_left = 797.0
 margin_top = 700.183
@@ -71,60 +77,65 @@ scroll_horizontal_enabled = false
 margin_right = 984.0
 margin_bottom = 303.733
 rect_min_size = Vector2( 984, 303.733 )
+custom_constants/separation = 49
+script = ExtResource( 6 )
 
 [node name="Choice 1" type="RichTextLabel" parent="Choice Box/AIMChoices"]
 margin_right = 984.0
 margin_bottom = 40.0
+rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
-custom_fonts/normal_font = ExtResource( 8 )
+custom_constants/table_vseparation = 0
+custom_fonts/normal_font = SubResource( 14 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="TextureButton" type="TextureButton" parent="Choice Box/AIMChoices/Choice 1"]
 margin_right = 1016.0
-margin_bottom = 103.0
-rect_min_size = Vector2( 984, 40 )
+margin_bottom = 40.0
+rect_min_size = Vector2( 1016, 40 )
 
 [node name="Choice 2" type="RichTextLabel" parent="Choice Box/AIMChoices"]
-margin_top = 44.0
+margin_top = 89.0
 margin_right = 984.0
-margin_bottom = 84.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 15 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="TextureButton" type="TextureButton" parent="Choice Box/AIMChoices/Choice 2"]
 margin_right = 1016.0
-margin_bottom = 103.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1016, 40 )
 
 [node name="Choice 3" type="RichTextLabel" parent="Choice Box/AIMChoices"]
-margin_top = 88.0
+margin_top = 178.0
 margin_right = 984.0
-margin_bottom = 128.0
+margin_bottom = 218.0
+rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 16 )
 bbcode_enabled = true
 fit_content_height = true
 scroll_active = false
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="TextureButton" type="TextureButton" parent="Choice Box/AIMChoices/Choice 3"]
 margin_right = 1016.0
-margin_bottom = 103.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1016, 40 )
 
 [node name="Exit" type="TextureButton" parent="."]
 margin_left = 1783.0
@@ -132,4 +143,16 @@ margin_top = 86.0
 margin_right = 1844.0
 margin_bottom = 147.0
 
+[connection signal="resized" from="Choice Box/AIMChoices/Choice 1" to="Choice Box/AIMChoices" method="_on_resized" binds= [ "Choice 1" ]]
+[connection signal="mouse_entered" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_entered" binds= [ "Choice 1" ]]
+[connection signal="mouse_exited" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_exited" binds= [ "Choice 1" ]]
+[connection signal="pressed" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="." method="_pressed" binds= [ "0" ]]
+[connection signal="resized" from="Choice Box/AIMChoices/Choice 2" to="Choice Box/AIMChoices" method="_on_resized" binds= [ "Choice 2" ]]
+[connection signal="mouse_entered" from="Choice Box/AIMChoices/Choice 2/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_entered" binds= [ "Choice 2" ]]
+[connection signal="mouse_exited" from="Choice Box/AIMChoices/Choice 2/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_exited" binds= [ "Choice 2" ]]
+[connection signal="pressed" from="Choice Box/AIMChoices/Choice 2/TextureButton" to="." method="_pressed" binds= [ "1" ]]
+[connection signal="resized" from="Choice Box/AIMChoices/Choice 3" to="Choice Box/AIMChoices" method="_on_resized" binds= [ "Choice 3" ]]
+[connection signal="mouse_entered" from="Choice Box/AIMChoices/Choice 3/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_entered" binds= [ "Choice 3" ]]
+[connection signal="mouse_exited" from="Choice Box/AIMChoices/Choice 3/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_exited" binds= [ "Choice 3" ]]
+[connection signal="pressed" from="Choice Box/AIMChoices/Choice 3/TextureButton" to="." method="_pressed" binds= [ "2" ]]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

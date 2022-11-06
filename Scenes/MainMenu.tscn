@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://UI/UI Assets/mainmenu_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/mousecursor.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://UI/UI Assets/settings_button_hover.png" type="Texture" id=5]
 [ext_resource path="res://UI/UI Assets/settings_button.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Music + SFX/[Spooktober 2022] Main (Final).mp3" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=4]
 size = 80
@@ -153,12 +154,11 @@ text = "Audio Designer"
 [node name="SettingsMenu" parent="." instance=ExtResource( 7 )]
 script = null
 
-[connection signal="mouse_entered" from="start/StartButton" to="." method="_on_StartButton_mouse_entered"]
-[connection signal="mouse_exited" from="start/StartButton" to="." method="_on_StartButton_mouse_exited"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+bus = "Music"
+
 [connection signal="pressed" from="start/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="mouse_entered" from="load/LoadButton" to="." method="_on_LoadButton_mouse_entered"]
-[connection signal="mouse_exited" from="load/LoadButton" to="." method="_on_LoadButton_mouse_exited"]
-[connection signal="mouse_entered" from="quit/QuitButton" to="." method="_on_QuitButton_mouse_entered"]
-[connection signal="mouse_exited" from="quit/QuitButton" to="." method="_on_QuitButton_mouse_exited"]
 [connection signal="pressed" from="quit/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

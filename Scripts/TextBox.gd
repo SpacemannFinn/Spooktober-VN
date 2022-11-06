@@ -1,25 +1,20 @@
 extends TextureRect
 
+onready var global = get_node("/root/global")
 var MouseOver = false
-onready var dia = get_node("/root/VisualNovel/Control")
-
-func _input(delta):
-	if Input.is_action_just_pressed("ui_accept_alt"):
-		if dia.finished == true:
-			if dia.pauseDialogue == false:
-				dia.load_dialogue()
-		else:
-			if dia.pauseDialogue == false:
-				get_node("/root/VisualNovel/Control/TextBox/Tween").stop_all()
-				get_node("/root/VisualNovel/Control/TextBox/RichTextLabel").percent_visible = 1
-				dia.finished = true
+var id
+signal mouse_over_tbox
+signal mouse_off_tbox
 
 
 func _on_TextBox_mouse_entered():
 	MouseOver = true
+	emit_signal("mouse_over_tbox")
 	pass # Replace with function body.
 
 
 func _on_TextBox_mouse_exited():
 	MouseOver = false
+	emit_signal("mouse_off_tbox")
 	pass # Replace with function body.
+

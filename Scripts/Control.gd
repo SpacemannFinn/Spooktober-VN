@@ -1,110 +1,204 @@
 extends Control
 
-onready var text = get_parent().get_node("Dialogue").dialogue_1
 onready var global = get_node("/root/global")
 onready var pauseDialogue = global.pauseDialogue
+onready var dict = global.readJSON("res://Dialog/main.json")
 var threeChoices = preload("res://UI/UI Assets/choices_base_three.png")
 var twoChoices = preload("res://UI/UI Assets/choices_base_two.png")
 
-var dialogue_index = 0
+export(String) var start_id
+
+var previous
+var current
 var active
 var finished
 
+var mouse_over = false
+onready var choices = $Choices
 
 var position
 var expression
 var choiceArray
+var speaker
+var count = 0
+
 
 func _ready():
-	load_dialogue()
+	start(start_id)
 
-func _physics_process(delta):
+func _input(event):
 	if active:
-		# If the player presses the spacebar, the dialogue will continue
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") && mouse_over == true:
 			if finished == true:
 				if pauseDialogue == false:
-					load_dialogue()
-			else:
-				if pauseDialogue == false: # If the dialogue is not paused, the dialogue will continue
-					$TextBox/Tween.stop_all()
-					$TextBox/RichTextLabel.percent_visible = 1
-					finished = true
-		
-		#This is the bit that chooses the sprites showing up on screen for
-		# people who aren't the MC
-		if $TextBox/Label.text == "Bob":
-			$Sprite.visible = true
-			if position == "1":
-				$Sprite.global_position = get_parent().get_node("1").position
-			if position == "2":
-				$Sprite.global_position = get_parent().get_node("2").position
-			if position == "3":
-				$Sprite.global_position = get_parent().get_node("3").position
-			if position == "4":
-				$Sprite.global_position = get_parent().get_node("4").position
-			
-			#This chooses expressions that show up on textbox
-			if expression == "Happy":
-				$TextBox/Speaking.texture = global.happy_expression
+					current = dict[current]['options']['0']['link']
+					load_dialogue(current)
+					placePosition(position, speaker)
+					if !current == 'END':
+						for num in dict[current]['options']:
+							count+=1
+					
+			else:	
+				$TextBox/Tween.stop_all()
+				$TextBox/Dialogue.percent_visible = 1
+				finished = true
+	
 		
 		
-		#This is the code that determines what choices show up
-		if $"Choices/Choice 1".text == "":
-			$"Choices/Choice 1".visible = false
-			$Choices.visible = false
-			pauseDialogue = false #This is to make sure that the dialogue doesn't pause when there are no choices
-		elif $"Choices/Choice 1".text != "" && pauseDialogue == false:
-			$"Choices/Choice 1".visible = true
-			$Choices.visible = true
-			pauseDialogue = true #This is to make sure that the dialogue pauses when there are choices
-		else:
-			$"Choices/Choice 1".visible = true
-			$Choices.visible = true
+		if count <= 1:
+			pauseDialogue = false
+		elif count <= 2:
+			pauseDialogue = true
+			choices.show()
+			choices.get_child(2).hide()
+			choices.texture = twoChoices
+		elif count == 3:
+			pauseDialogue = true
+			choices.show()
+			choices.get_child(2).show()
+			choices.texture = threeChoices
 		
-		if $"Choices/Choice 2".text == "":
-			$"Choices/Choice 2".visible = false
-		else:
-			$"Choices/Choice 2".visible = true
 		
-		if $"Choices/Choice 3".text == "":
-			$"Choices/Choice 3".visible = false
-			$Choices.texture = twoChoices #This is to make sure that the texture displays the right amount of slots for the given choices
-		else:
-			$"Choices/Choice 3".visible = true
-			$Choices.texture = threeChoices #This is to make sure that the texture displays the right amount of slots for the given choices
+		# if single empty option
+		if !current == 'END':
+			if len(dict[current]['options']) == 1:
+				choices.hide()
+	
+	
 
-func load_dialogue():
-	if dialogue_index < text.size():
-		active = true
-		finished = false
-		
-		#This is the code that determines the content of each option box
-		$TextBox.visible = true
-		$TextBox/RichTextLabel.bbcode_text = text[dialogue_index]["Text"]
-		$TextBox/Label.text = text[dialogue_index]["Name"]
-		$"Choices/Choice 1".bbcode_text = "[center]" + text[dialogue_index]["Choices"][0] + "[/center]"
-		$"Choices/Choice 2".bbcode_text = "[center]" + text[dialogue_index]["Choices"][1] + "[/center]"
-		$"Choices/Choice 3".bbcode_text = "[center]" + text[dialogue_index]["Choices"][2] + "[/center]"
-		
-		position = text[dialogue_index]["Position"] #This is to make sure that the code knows where to place the sprite based on the contents of the dialogue node
-		expression = text[dialogue_index]["Expression"] #This is to make sure that the code knows what expression to display based on the contents of the dialogue node
-		choiceArray = text[dialogue_index]["Choices"] #This is to make sure that the code knows what choices to display based on the contents of the dialogue node
-		
-		#This is the code that controls the transition between dialogue box contents
-		$TextBox/RichTextLabel.percent_visible = 0
-		$TextBox/Tween.interpolate_property(
-			$TextBox/RichTextLabel, "percent_visible", 0, 1, 2,
-			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
-		)
-		
-		$TextBox/Tween.start()
-	else:
-		$TextBox.visible = false
-		finished = true
-		active = false
-	dialogue_index += 1
+func load_dialogue(idx):
+	
+	if idx == "END":
+		stop()
+		return
+	
+	active = true
+	finished = false
+	
+	var type = idx.split('_')[0]
+	
+	match(type):
+		'0':
+			#starting node
+			current = dict[idx]['link']
+			load_dialogue(current)
+		'1':
+			#dialogue
+			
+			position = dict[idx]["position"] #Position of the Bestie Sprite
+			expression = dict[idx]["expression"] #Faces of Bestie & Player
+			choiceArray = dict[idx]["options"] #Array of choices
+			speaker = dict[idx]["speaker"] #Speaker names
+			
+			$TextBox.visible = true
+			
+			var dia = dict[idx]['dialogue']
+			if !dia == '' || !dia == ' ': 
+				$TextBox/Dialogue.bbcode_text = dia
+			else:
+				$TextBox/Dialogue.bbcode_text = ' '
+			
+			
+			placePosition(position, speaker)
+			
+			for num in choiceArray:
+				var choice = choices.get_child(int(num))
+				var text = dict[idx]['options'][num]['text']
+				if !text == '' || !text == ' ':
+					choice.bbcode_text = '[center]' + text + '[/center]'
+				else:
+					choice.bbcode_text = ''
+			
+			count = 0
+		'3':
+			# signal
+			emit_signal('dialogue_signal', dict[idx]['signalValue'])
+			current = dict[idx]['link']
+			load_dialogue(current)
+	
+	
+	
+	
+	#This is the code that controls the transition between dialogue box contents
+	$TextBox/Dialogue.percent_visible = 0
+	$TextBox/Tween.interpolate_property(
+		$TextBox/Dialogue, "percent_visible", 0, 1, 2,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+	
+	$TextBox/Tween.start()
+	
+
 
 
 func _on_Tween_tween_completed(object, key):
 	finished = true
+
+func _on_Exit_pressed():
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://Scenes/VisualNovel.tscn")
+	pass # Replace with function body.
+
+func start(id):
+	if !dict:
+		printerr("No dialogue data!")
+		return
+	elif !dict['start'][id]:
+		printerr('Start ID not present')
+		return
+	current = dict['start'][id]
+	load_dialogue(current)
+
+func stop():
+	choices.hide()
+	$TextBox.visible = false
+	finished = true
+	active = false
+
+func expressionista(speaker, expression):
+	match(speaker):
+		'Bestie':
+			match(expression):
+				'empty':
+					pass
+			pass
+		'Player':
+			match(expression):
+				'empty':
+					pass
+			pass
+	pass
+
+
+func placePosition(pos, speaker):
+
+	match(speaker):
+		'Bestie':
+			match(pos):
+				'1':
+					$Sprite.global_position = $'Position/1'.position
+				'2':
+					$Sprite.global_position = $'Position/2'.position
+				'3':
+					$Sprite.global_position = $'Position/3'.position
+				'4':
+					$Sprite.global_position = $'Position/4'.position
+		'Player':
+			pass
+	
+
+
+func _on_TextBox_mouse_over_tbox():
+	mouse_over = true
+	pass # Replace with function body.
+
+
+func _on_TextBox_mouse_off_tbox():
+	mouse_over = false
+	pass # Replace with function body.
+
+
+func _pressed(arg):
+	current = dict[current]['options'][arg]['link']
+	load_dialogue(current)
+	pass

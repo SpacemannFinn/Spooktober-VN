@@ -1,90 +1,62 @@
-extends RichTextLabel
+extends Control
 var font
 
 
-func _on_TextureButton_mouse_entered():
-	font = get("custom_fonts/normal_font")
+func _on_TextureButton_mouse_entered(label):
+	font = get_node(label).get("custom_fonts/normal_font")
 	font.outline_color = Color("BB0087")
 	font.outline_size = 3
-	print("Choice 1 Entered")
+	print(label, " Entered")
 	font.update_changes()
 	pass # Replace with function body.
 
 
-func _on_TextureButton_mouse_exited():
-	font = get("custom_fonts/normal_font")
+func _on_TextureButton_mouse_exited(label):
+	font = get_node(label).get("custom_fonts/normal_font")
 	font.outline_color = Color.white
 	font.outline_size = 0
-	print("Choice 1 Exited")
+	print(label, " Exited")
 	font.update_changes()
 	pass # Replace with function body.
 
 
-func _on_TextureButton2_mouse_entered():
-	font = get("custom_fonts/normal_font")
-	font.outline_color = Color("BB0087")
-	font.outline_size = 3
-	print("Choice 2 Entered")
-	font.update_changes()
-	pass # Replace with function body.
-
-
-func _on_TextureButton2_mouse_exited():
-	font = get("custom_fonts/normal_font")
-	font.outline_color = Color.white
-	font.outline_size = 0
-	print("Choice 2 Exited")
-	font.update_changes()
-	pass # Replace with function body.
-
-
-func _on_TextureButton3_mouse_entered():
-	font = get("custom_fonts/normal_font")
-	font.outline_color = Color("BB0087")
-	font.outline_size = 3
-	print("Choice 3 Entered")
-	font.update_changes()
-	pass # Replace with function body.
-
-
-func _on_TextureButton3_mouse_exited():
-	font = get("custom_fonts/normal_font")
-	font.outline_color = Color.white
-	font.outline_size = 0
-	print("Choice 3 Exited")
-	font.update_changes()
-	pass # Replace with function body.
-
-
-func _on_FullScreen_Button_mouse_entered():
-	font = get("custom_fonts/normal_font")
+func _on_Menu_Button_mouse_entered(label):
+	font = get_node(label).get("custom_fonts/normal_font")
 	font.outline_color = Color("000ECF")
 	font.outline_size = 3
-	print("Fullscreen Entered")
+	print(label, " Entered")
 	font.update_changes()
 	pass # Replace with function body.
 
-func _on_FullScreen_Button_mouse_exited():
-	font = get("custom_fonts/normal_font")
+func _on_Menu_Button_mouse_exited(label):
+	font = get_node(label).get("custom_fonts/normal_font")
 	font.outline_size = 0
-	print("Fullscreen Exited")
+	print(label, " Exited")
 	font.update_changes()
 	pass # Replace with function body. 
 
-func _on_Windowed_Button_mouse_entered():
-	font = get("custom_fonts/normal_font")
-	font.outline_color = Color("000ECF")
+
+func _on_AIMTextureButton_mouse_entered(label):
+	font = get_node(label).get("custom_fonts/normal_font")
+	font.outline_color = Color("8E6CFF")
 	font.outline_size = 3
-	print("Windowed Entered")
+	print("AIM ", label, " Entered")
 	font.update_changes()
 	pass # Replace with function body.
 
 
-func _on_Windowed_Button_mouse_exited():
-	font = get("custom_fonts/normal_font")
+func _on_AIMTextureButton_mouse_exited(label):
+	font = get_node(label).get("custom_fonts/normal_font")
+	font.outline_color = Color.white
 	font.outline_size = 0
-	print("Windowed Exited")
+	print("AIM ", label, " Exited")
 	font.update_changes()
 	pass # Replace with function body.
 
 
+func _on_resized(label):
+	var labelSize = get_node(label)
+	var buttonSize = get_node(label).get_child(1)
+	buttonSize.rect_size.y = labelSize.rect_size.y
+	print(buttonSize.rect_size.y)
+	pass # Replace with function body.

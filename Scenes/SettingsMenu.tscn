@@ -82,6 +82,7 @@ margin_bottom = 1080.0
 texture = ExtResource( 5 )
 
 [node name="Window Size" type="Control" parent="."]
+script = ExtResource( 3 )
 
 [node name="Fullscreen" type="RichTextLabel" parent="Window Size"]
 margin_left = 117.0
@@ -93,7 +94,6 @@ custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "FULLSCREEN"
 text = "FULLSCREEN"
-script = ExtResource( 3 )
 
 [node name="FullScreen_Button" type="TextureButton" parent="Window Size/Fullscreen"]
 margin_left = -24.0
@@ -111,7 +111,6 @@ custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "WINDOWED"
 text = "WINDOWED"
-script = ExtResource( 3 )
 
 [node name="Windowed_Button" type="TextureButton" parent="Window Size/Windowed"]
 margin_left = -34.0
@@ -295,11 +294,11 @@ text = "SFX"
 align = 1
 valign = 1
 
-[connection signal="mouse_entered" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen" method="_on_FullScreen_Button_mouse_entered"]
-[connection signal="mouse_exited" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen" method="_on_FullScreen_Button_mouse_exited"]
+[connection signal="mouse_entered" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size" method="_on_Menu_Button_mouse_entered" binds= [ "Fullscreen" ]]
+[connection signal="mouse_exited" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size" method="_on_Menu_Button_mouse_exited" binds= [ "Fullscreen" ]]
 [connection signal="pressed" from="Window Size/Fullscreen/FullScreen_Button" to="Window Size/Fullscreen/FullScreen_Button" method="_on_FullScreen_Button_pressed"]
-[connection signal="mouse_entered" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed" method="_on_Windowed_Button_mouse_entered"]
-[connection signal="mouse_exited" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed" method="_on_Windowed_Button_mouse_exited"]
+[connection signal="mouse_entered" from="Window Size/Windowed/Windowed_Button" to="Window Size" method="_on_Menu_Button_mouse_entered" binds= [ "Windowed" ]]
+[connection signal="mouse_exited" from="Window Size/Windowed/Windowed_Button" to="Window Size" method="_on_Menu_Button_mouse_exited" binds= [ "Windowed" ]]
 [connection signal="pressed" from="Window Size/Windowed/Windowed_Button" to="Window Size/Windowed/Windowed_Button" method="_on_Windowed_Button_pressed"]
 [connection signal="mouse_entered" from="Bars/TextSpeedLevel/TextureProgress" to="Bars" method="_on_TextureProgress_mouse_entered"]
 [connection signal="mouse_exited" from="Bars/TextSpeedLevel/TextureProgress" to="Bars" method="_on_TextureProgress_mouse_exited"]

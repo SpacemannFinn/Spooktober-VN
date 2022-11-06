@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/IM_message.mp3-4cbd3d3e8c11f0279c8f558cc317189c.mp3str"
+
+[deps]
+
+source_file="res://Music + SFX/Spooktober 2022 SFX/IM_message.mp3"
+dest_files=[ "res://.import/IM_message.mp3-4cbd3d3e8c11f0279c8f558cc317189c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
