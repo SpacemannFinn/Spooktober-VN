@@ -15,6 +15,7 @@ onready var choices = $"Choice Box/AIMChoices"
 onready var chat = $Chat/VBoxContainer
 
 
+var ping = preload("res://Music + SFX/Spooktober 2022 SFX/IM_message.mp3")
 var newNPCLabel
 var nameColor
 
@@ -133,6 +134,12 @@ func newNPCChatBox():
 	dynamic_font.size = 34
 	dynamic_font.outline_size = 0
 	
+	var IMsfx = AudioStreamPlayer.new()
+	ping.loop = false
+	IMsfx.stream = ping
+	IMsfx.bus = 'SFX'
+	IMsfx.play()
+	
 	var tween = Tween.new()
 	tween.emit_signal("tween_completed")
 	
@@ -145,6 +152,7 @@ func newNPCChatBox():
 	newChatBox.rect_clip_content = true
 	newChatBox.add_font_override("normal_font", dynamic_font)
 	newChatBox.add_child(tween)
+	newChatBox.add_child(IMsfx)
 	
 	return newChatBox
 
