@@ -1,45 +1,6 @@
-# DialogueEditor
+# Tricks Not Treats
+This game was originally intended for the [Spooktober Visual Novel Jam](https://itch.io/jam/spooktober-vn-jam-2022) but due to personal issues I had to continue development beyond September and well into October.
 
-This is a Godot Editor plugin to manage dialogues in godot. The plugin allows you to quickly and easily manage all your actors and dialogues. You can also create your own dialog ui. Resources are assigned very easily using drag and drop. The assigned resources can be viewed in preview window, to check them. You can also test all your dialogues in preview mode with simple play system.
-
-Version: 1.3.6
-
-The following screenshots show the working areas of the plugin:
-
-### Videos
-EN Dialogue Editor
-[![EN Dialogue Editor](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/level2d.png)](https://www.youtube.com/watch?v=UUG1ViImwcM&list=PL41Y0dlU24xcbFsubnvMRX9jHGBizo_AE)
-
-DE Dialogue Editor
-[![DE Dialogue Editor](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/level2d.png)](https://www.youtube.com/watch?v=NyKvWI5dUrM&list=PL41Y0dlU24xd0qVkOXA_oF30UWumH2HXe)
-
-RU Dialogue Editor
-[![RU Dialogue Editor](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/level2d.png)](https://www.youtube.com/watch?v=-jsNpYUrGzA&list=PL41Y0dlU24xfP7o5_zPUd5bhLTadB4BxG)
-
-### Images
-2D Level example
-![2D Level example](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/level2d.png)
-
-3D Level example
-![3D Level example](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/level3d.png)
-
-Actors manager
-![Actors manager](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/actors.png)
-
-Dialogs preview
-![Dialogs preview](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/preview.png)
-
-Dialogue example simple
-![Dialogue example simple](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/dialogue_simple.png)
-
-Dialogue example question
-![Dialogue example simple](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/dialogue_question.png)
-
-Dialogue example recursion
-![Dialogue example simple](https://raw.githubusercontent.com/VP-GAMES/DialogueEditor/main/.github/images/dialogue_recursion.png)
-
-How to install
------------------
-
-This is a regular editor plugin. Copy the contents of addons/dialogue_editor into the same folder in your project, and activate it in your project settings.
-This plugin also contain example implementation. You find it in addons/dialogue_example folder.
+## Game Engine
+This game was developed on Godot Engine v3.5.1.stable.official [6fed1ffa3]. Usage of this engine introduced a substantial amount of difficulty when developing the VN especially in the face of the personal difficulties I faced but I found development using this to be truly enjoyable and a smooth process.
+![Godot Engine Logo](https://godotengine.org/themes/godotengine/assets/press/logo_large_color_light.png)
