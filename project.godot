@@ -44,7 +44,7 @@ dialogues_selected_dialogue="ade89692-0b62-47dd-bacf-2b835ca69902"
 
 window/size/width=1920
 window/size/height=1080
-window/size/test_width=980
+window/size/test_width=960
 window/size/test_height=540
 window/dpi/allow_hidpi=true
 window/ios/hide_home_indicator=false

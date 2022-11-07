@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/UI Assets/mainmenu_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/mousecursor.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://UI/UI Assets/settings_button.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/SettingsMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Music + SFX/[Spooktober 2022] Main (Final).mp3" type="AudioStream" id=8]
+[ext_resource path="res://debug tools/audioDebug.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/SaveLoad.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=4]
 size = 80
@@ -24,13 +26,23 @@ size = 80
 outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=7]
 size = 22
 outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 22
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 22
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 22
+outline_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 font_data = ExtResource( 3 )
 
 [node name="Main Menu" type="TextureRect"]
@@ -104,9 +116,9 @@ margin_left = 292.0
 margin_top = 872.0
 margin_right = 585.0
 margin_bottom = 903.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 7 )
 bbcode_enabled = true
-bbcode_text = "SALTYCRYPTID:"
+bbcode_text = "[url=https://twitter.com/saltycryptid]SALTYCRYPTID:[/url]"
 text = "SALTYCRYPTID:"
 
 [node name="Label" type="Label" parent="Credits/saltycryptid"]
@@ -122,8 +134,9 @@ margin_left = 292.0
 margin_top = 916.0
 margin_right = 562.0
 margin_bottom = 947.0
-custom_fonts/normal_font = SubResource( 2 )
-bbcode_text = "NEN:"
+custom_fonts/normal_font = SubResource( 8 )
+bbcode_enabled = true
+bbcode_text = "[url=https://twitter.com/earthbound_m]NEN:[/url]"
 text = "NEN:"
 
 [node name="Label" type="Label" parent="Credits/nen"]
@@ -139,8 +152,9 @@ margin_left = 292.0
 margin_top = 960.0
 margin_right = 560.0
 margin_bottom = 991.0
-custom_fonts/normal_font = SubResource( 2 )
-bbcode_text = "LEAFLET:"
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[url=https://twitter.com/LetLeaf]LEAFLET:[/url]"
 text = "LEAFLET:"
 
 [node name="Label" type="Label" parent="Credits/leaflet"]
@@ -151,6 +165,8 @@ custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Audio Designer"
 
+[node name="SaveLoadMenu" parent="." instance=ExtResource( 10 )]
+
 [node name="SettingsMenu" parent="." instance=ExtResource( 7 )]
 script = null
 
@@ -159,6 +175,15 @@ stream = ExtResource( 8 )
 autoplay = true
 bus = "Music"
 
+[node name="Node2D" parent="." instance=ExtResource( 9 )]
+visible = false
+margin_left = 5.0
+margin_top = 932.0
+margin_right = 5.0
+margin_bottom = 932.0
+rect_scale = Vector2( 0.3, 0.3 )
+
 [connection signal="pressed" from="start/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="load/LoadButton" to="." method="_on_LoadButton_pressed"]
 [connection signal="pressed" from="quit/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

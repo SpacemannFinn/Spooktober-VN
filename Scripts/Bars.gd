@@ -15,7 +15,7 @@ func _input(event):
 
 func setValue(slider : TextureProgress):
 	slider.value = ratioInBody(slider) * slider.max_value
-	print(slider.name, "Speed", slider.value)
+	print(slider.name, " Speed ", slider.value)
 
 func ratioInBody(slider : TextureProgress):
 	var posClicked = get_local_mouse_position() - slider.rect_position

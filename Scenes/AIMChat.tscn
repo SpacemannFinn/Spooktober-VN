@@ -6,7 +6,7 @@
 [ext_resource path="res://UI/UI Assets/scroll.tres" type="StyleBox" id=4]
 [ext_resource path="res://UI/UI Assets/scrollbar.tres" type="StyleBox" id=5]
 [ext_resource path="res://Scripts/TextHover.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/audioDebug.tscn" type="PackedScene" id=7]
+[ext_resource path="res://debug tools/audioDebug.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -78,12 +78,14 @@ scroll_horizontal_enabled = false
 margin_right = 984.0
 margin_bottom = 303.733
 rect_min_size = Vector2( 984, 303.733 )
-custom_constants/separation = 49
+custom_constants/separation = 30
+alignment = 1
 script = ExtResource( 6 )
 
 [node name="Choice 1" type="RichTextLabel" parent="Choice Box/AIMChoices"]
+margin_top = 61.0
 margin_right = 984.0
-margin_bottom = 40.0
+margin_bottom = 101.0
 rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
 custom_constants/table_vseparation = 0
@@ -101,9 +103,9 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 1016, 40 )
 
 [node name="Choice 2" type="RichTextLabel" parent="Choice Box/AIMChoices"]
-margin_top = 89.0
+margin_top = 131.0
 margin_right = 984.0
-margin_bottom = 129.0
+margin_bottom = 171.0
 rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
 custom_fonts/normal_font = SubResource( 15 )
@@ -120,9 +122,9 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 1016, 40 )
 
 [node name="Choice 3" type="RichTextLabel" parent="Choice Box/AIMChoices"]
-margin_top = 178.0
+margin_top = 201.0
 margin_right = 984.0
-margin_bottom = 218.0
+margin_bottom = 241.0
 rect_min_size = Vector2( 984, 40 )
 custom_colors/default_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
 custom_fonts/normal_font = SubResource( 16 )
@@ -145,11 +147,15 @@ margin_right = 1844.0
 margin_bottom = 147.0
 
 [node name="Node2D" parent="." instance=ExtResource( 7 )]
+visible = false
 margin_left = 5.0
 margin_top = 932.0
 margin_right = 5.0
 margin_bottom = 932.0
 rect_scale = Vector2( 0.3, 0.3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "Music"
 
 [connection signal="resized" from="Choice Box/AIMChoices/Choice 1" to="Choice Box/AIMChoices" method="_on_resized" binds= [ "Choice 1" ]]
 [connection signal="mouse_entered" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_entered" binds= [ "Choice 1" ]]

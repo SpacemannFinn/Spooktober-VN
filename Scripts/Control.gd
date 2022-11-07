@@ -98,7 +98,8 @@ func load_dialogue(idx):
 			else:
 				$TextBox/Dialogue.bbcode_text = ' '
 			
-			
+			var historydia = str(speaker) + ": " + str(dia)
+			global.writeJSON(historydia)
 			placePosition(position, speaker)
 			
 			for num in choiceArray:

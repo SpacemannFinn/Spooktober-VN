@@ -7,15 +7,18 @@ onready var dict = global.readJSON("res://Dialog/main.json")
 export(String) var start_id
 
 var previous
-var current1
+var current
 var active
 var finished
+var audioplayed = false
 
 onready var choices = $"Choice Box/AIMChoices"
 onready var chat = $Chat/VBoxContainer
 
 
 var ping = preload("res://Music + SFX/Spooktober 2022 SFX/IM_message.mp3")
+var login = preload("res://Music + SFX/Spooktober 2022 SFX/IM_log_in.mp3")
+var logout = preload("res://Music + SFX/Spooktober 2022 SFX/IM_log_out.mp3")
 var newNPCLabel
 var nameColor
 
@@ -24,6 +27,9 @@ var count = 0
 
 
 func _ready():
+	login.loop = false
+	$AudioStreamPlayer.stream = login
+	$AudioStreamPlayer. play()
 	start(start_id)
 
 func _physics_process(delta):
@@ -175,3 +181,5 @@ func _pressed(arg):
 	current = dict[current]['options'][arg]['link']
 	load_dialogue(current)
 	pass
+
+

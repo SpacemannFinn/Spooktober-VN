@@ -60,3 +60,5 @@ func _on_resized(label):
 	buttonSize.rect_size.y = labelSize.rect_size.y
 	print(buttonSize.rect_size.y)
 	pass # Replace with function body.
+
+

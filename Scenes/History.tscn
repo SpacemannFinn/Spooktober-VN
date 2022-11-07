@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Popup.gd" type="Script" id=1]
+[ext_resource path="res://Font/Ubuntu-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 130
+font_data = ExtResource( 2 )
 
 [node name="HistoryMenu" type="Popup"]
 margin_right = 1920.0
@@ -12,8 +17,24 @@ margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0, 0, 0, 1 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 60.0
+margin_top = 20.0
+margin_right = 610.0
+margin_bottom = 180.0
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]HISTORY[/center]"
+text = "HISTORY"
+fit_content_height = true
+
 [node name="History" type="ScrollContainer" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_left = 60.0
+margin_top = 230.0
+margin_right = 1860.0
+margin_bottom = 1030.0
 
 [node name="AllInfo" type="VBoxContainer" parent="History"]
+margin_right = 1800.0
+margin_bottom = 800.0
+rect_min_size = Vector2( 1800, 800 )
