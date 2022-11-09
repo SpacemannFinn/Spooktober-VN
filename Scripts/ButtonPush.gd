@@ -7,7 +7,7 @@ signal menu_close
 func _on_FullScreen_Button_pressed():
 	if on == false:
 		get_parent().modulate = Color("00EFFF")
-	else:
+	else:	
 		get_parent().get_parent().get_node("Windowed").modulate = Color("F4F4F4")
 		on == true
 		get_parent().modulate = Color("00EFFF")
