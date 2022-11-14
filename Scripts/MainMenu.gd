@@ -47,6 +47,8 @@ func _menu_closed():
 	$SettingsMenu.hide()
 
 func _on_StartButton_pressed():
+	var dir = Directory.new()
+	dir.remove("res://SavedData/history.json")
 	get_tree().change_scene("res://Scenes/VisualNovel.tscn")
 
 func _on_LoadButton_pressed():

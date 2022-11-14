@@ -147,7 +147,6 @@ margin_right = 1844.0
 margin_bottom = 147.0
 
 [node name="Node2D" parent="." instance=ExtResource( 7 )]
-visible = false
 margin_left = 5.0
 margin_top = 932.0
 margin_right = 5.0

@@ -166,6 +166,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Audio Designer"
 
 [node name="SaveLoadMenu" parent="." instance=ExtResource( 10 )]
+visible = false
 
 [node name="SettingsMenu" parent="." instance=ExtResource( 7 )]
 script = null
@@ -176,7 +177,6 @@ autoplay = true
 bus = "Music"
 
 [node name="Node2D" parent="." instance=ExtResource( 9 )]
-visible = false
 margin_left = 5.0
 margin_top = 932.0
 margin_right = 5.0

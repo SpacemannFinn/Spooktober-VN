@@ -68,7 +68,6 @@ size = 70
 font_data = ExtResource( 4 )
 
 [node name="SettingsMenu" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -215,7 +214,7 @@ margin_right = 1666.0
 margin_bottom = 223.0
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "SETTING"
+text = "SETTINGS"
 align = 1
 valign = 1
 

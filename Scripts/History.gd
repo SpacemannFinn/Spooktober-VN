@@ -8,6 +8,8 @@ func _ready():
 	popup()
 
 func _process(delta):
+	if dict == null:
+		return
 	if(count >= len(dict)):
 		return
 	loadHistory()

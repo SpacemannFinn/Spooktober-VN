@@ -1,11 +1,11 @@
 [gd_resource type="StyleBoxTexture" load_steps=3 format=2]
 
-[ext_resource path="res://UI/UI Assets/scrollvertical_bar.png" type="Texture" id=1]
+[ext_resource path="res://UI/UI Assets/scrollvertical_bar_resized.jpg.png" type="Texture" id=1]
 
 [sub_resource type="GDScript" id=1]
 
 [resource]
 texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 27, 368 )
-margin_top = 47.0
+region_rect = Rect2( 0, 0, 27, 164.228 )
+axis_stretch_horizontal = 2
 script = SubResource( 1 )
