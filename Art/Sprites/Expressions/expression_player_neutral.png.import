@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expression_bestie_relieved.png-fd281316979f70f9cbfe9b0c7125f1d4.stex"
+path="res://.import/expression_player_neutral.png-3c640cc89f1855a5500862965cc36c62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/expression_bestie_relieved.png"
-dest_files=[ "res://.import/expression_bestie_relieved.png-fd281316979f70f9cbfe9b0c7125f1d4.stex" ]
+source_file="res://Art/Sprites/Expressions/expression_player_neutral.png"
+dest_files=[ "res://.import/expression_player_neutral.png-3c640cc89f1855a5500862965cc36c62.stex" ]
 
 [params]
 

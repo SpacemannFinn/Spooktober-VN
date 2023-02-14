@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expression_player_surprised.png-ef1aba28caf5f3b95504243243a7774c.stex"
+path="res://.import/002.png-ab7fbeea7c848dd95151cc4d09e64507.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/expression_player_surprised.png"
-dest_files=[ "res://.import/expression_player_surprised.png-ef1aba28caf5f3b95504243243a7774c.stex" ]
+source_file="res://SavedData/002.png"
+dest_files=[ "res://.import/002.png-ab7fbeea7c848dd95151cc4d09e64507.stex" ]
 
 [params]
 

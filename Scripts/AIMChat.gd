@@ -108,6 +108,11 @@ func load_dialogue(idx):
 				else:
 					choice.bbcode_text = ''
 			
+			#Writes current dialogue to History
+			var historydia = str(speaker) + ": " + str(dia)
+			global.writeHistory(str(historydia))
+			
+			
 			count = 0
 		'3':
 			# signal
@@ -119,7 +124,7 @@ func load_dialogue(idx):
 		#This is the code that controls the transition between dialogue box contents
 	newNPCLabel.percent_visible = 1
 	newNPCLabel.get_child(1).interpolate_property(
-		newNPCLabel, "percent_visible", 0, 1, 2,
+		newNPCLabel, "percent_visible", 0, 1, 5,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 	)
 		
@@ -183,3 +188,13 @@ func _pressed(arg):
 	pass
 
 
+func saveData():
+	var saveDict = {
+		"saveImage": "",
+		"startid": start_id,
+		"currentDia": current,
+		"scene": get_tree().current_scene.filename,
+		"date": "",
+		"time": ""
+	}
+	return saveDict

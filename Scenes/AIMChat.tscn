@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/UI Assets/aim_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/AIMChat.gd" type="Script" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://UI/UI Assets/scrollbar.tres" type="StyleBox" id=5]
 [ext_resource path="res://Scripts/TextHover.gd" type="Script" id=6]
 [ext_resource path="res://debug tools/audioDebug.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/textBoxMenu.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Font/Ubuntu-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=17]
+size = 34
+font_data = SubResource( 11 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 34
+font_data = SubResource( 11 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -36,10 +48,85 @@ font_data = ExtResource( 3 )
 size = 34
 font_data = ExtResource( 3 )
 
-[node name="AIM" type="TextureRect"]
+[node name="AIM" type="TextureRect" groups=["DialogueController"]]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 start_id = "ROOM"
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_left = 573.0
+margin_top = 156.0
+margin_right = 1133.0
+margin_bottom = 206.0
+custom_constants/separation = 10
+script = ExtResource( 8 )
+
+[node name="savebutton" type="TextureButton" parent="Container"]
+margin_right = 130.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 0 )
+
+[node name="save" type="Label" parent="Container/savebutton"]
+margin_left = 23.9999
+margin_top = 5.0
+margin_right = 116.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 17 )
+text = "SAVE"
+align = 1
+valign = 1
+
+[node name="loadbutton" type="TextureButton" parent="Container"]
+margin_left = 140.0
+margin_right = 270.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 0 )
+
+[node name="load" type="Label" parent="Container/loadbutton"]
+margin_left = 19.5001
+margin_top = 7.0
+margin_right = 110.5
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "LOAD"
+align = 1
+valign = 1
+
+[node name="histbutton" type="TextureButton" parent="Container"]
+margin_left = 280.0
+margin_right = 410.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+
+[node name="hist" type="Label" parent="Container/histbutton"]
+margin_left = 26.0
+margin_top = 7.0
+margin_right = 104.0
+margin_bottom = 46.0
+custom_colors/font_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "HIST."
+align = 1
+valign = 1
+
+[node name="menuButton" type="TextureButton" parent="Container"]
+margin_left = 420.0
+margin_right = 550.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+
+[node name="menu" type="Label" parent="Container/menuButton"]
+margin_left = 16.4999
+margin_top = 5.0
+margin_right = 113.5
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0.0392157, 0.0156863, 0.0156863, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "MENU"
+align = 1
+valign = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 margin_left = 585.0
@@ -147,6 +234,7 @@ margin_right = 1844.0
 margin_bottom = 147.0
 
 [node name="Node2D" parent="." instance=ExtResource( 7 )]
+visible = false
 margin_left = 5.0
 margin_top = 932.0
 margin_right = 5.0
@@ -156,6 +244,10 @@ rect_scale = Vector2( 0.3, 0.3 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
+[connection signal="pressed" from="Container/savebutton" to="Container" method="_on_savebutton_pressed"]
+[connection signal="pressed" from="Container/loadbutton" to="Container" method="_on_loadbutton_pressed"]
+[connection signal="pressed" from="Container/histbutton" to="Container" method="_on_histbutton_pressed"]
+[connection signal="pressed" from="Container/menuButton" to="Container" method="_on_menuButton_pressed"]
 [connection signal="resized" from="Choice Box/AIMChoices/Choice 1" to="Choice Box/AIMChoices" method="_on_resized" binds= [ "Choice 1" ]]
 [connection signal="mouse_entered" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_entered" binds= [ "Choice 1" ]]
 [connection signal="mouse_exited" from="Choice Box/AIMChoices/Choice 1/TextureButton" to="Choice Box/AIMChoices" method="_on_AIMTextureButton_mouse_exited" binds= [ "Choice 1" ]]

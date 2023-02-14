@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expression_player_happy.png-7f6329c1a0913e0114bf05a51950cece.stex"
+path="res://.import/expression_player_worried.png-bac3f191ca9aab2da3eaea8ab7ad8738.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/expression_player_happy.png"
-dest_files=[ "res://.import/expression_player_happy.png-7f6329c1a0913e0114bf05a51950cece.stex" ]
+source_file="res://Art/Sprites/Expressions/expression_player_worried.png"
+dest_files=[ "res://.import/expression_player_worried.png-bac3f191ca9aab2da3eaea8ab7ad8738.stex" ]
 
 [params]
 

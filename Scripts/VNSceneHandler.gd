@@ -8,7 +8,6 @@ var twoChoices = preload("res://UI/UI Assets/choices_base_two.png")
 
 export(String) var start_id
 
-var previous
 var current
 var active
 var finished
@@ -24,6 +23,10 @@ var count = 0
 
 
 func _ready():
+	print(self.start_id)
+	if current != null:
+		load_dialogue(current)
+		return
 	start(start_id)
 
 func _input(event):
@@ -126,7 +129,7 @@ func load_dialogue(idx):
 	#This is the code that controls the transition between dialogue box contents
 	$TextBox/Dialogue.percent_visible = 0
 	$TextBox/Tween.interpolate_property(
-		$TextBox/Dialogue, "percent_visible", 0, 1, 2,
+		$TextBox/Dialogue, "percent_visible", 0, 1, global.textSpeed,
 		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
 	)
 	
@@ -190,7 +193,7 @@ func placePosition(pos, speaker):
 		'Player':
 			pass
 	
-
+ 
 
 func _on_TextBox_mouse_over_tbox():
 	mouse_over = true
@@ -206,3 +209,15 @@ func _pressed(arg):
 	current = dict[current]['options'][arg]['link']
 	load_dialogue(current)
 	pass
+
+
+func saveData():
+	var saveDict = {
+		"saveImage": "",
+		"startid": start_id,
+		"currentDia": current,
+		"scene": get_tree().current_scene.filename,
+		"date": "",
+		"time": ""
+	}
+	return saveDict

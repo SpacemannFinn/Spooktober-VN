@@ -1,13 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/History.gd" type="Script" id=1]
 [ext_resource path="res://Font/Ubuntu-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/ButtonPush.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/LabelHover.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 130
 font_data = ExtResource( 2 )
 
-[node name="HistoryMenu" type="Popup"]
+[sub_resource type="DynamicFont" id=2]
+size = 110
+font_data = ExtResource( 2 )
+
+[node name="HistoryMenu" type="Control"]
 margin_right = 1920.0
 margin_bottom = 1080.0
 script = ExtResource( 1 )
@@ -38,3 +44,27 @@ margin_bottom = 1030.0
 margin_right = 1800.0
 margin_bottom = 800.0
 rect_min_size = Vector2( 1800, 800 )
+
+[node name="Labels" type="Control" parent="."]
+mouse_filter = 2
+
+[node name="X" type="Label" parent="Labels"]
+margin_left = 1700.0
+margin_top = 57.0
+margin_right = 1871.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.956863, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "X"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+
+[node name="XButton" type="TextureButton" parent="Labels/X"]
+margin_right = 172.0
+margin_bottom = 168.0
+script = ExtResource( 3 )
+
+[connection signal="mouse_entered" from="Labels/X/XButton" to="Labels/X" method="_on_XButton_mouse_entered"]
+[connection signal="mouse_exited" from="Labels/X/XButton" to="Labels/X" method="_on_XButton_mouse_exited"]
+[connection signal="pressed" from="Labels/X/XButton" to="Labels/X/XButton" method="_on_XButton_pressed"]

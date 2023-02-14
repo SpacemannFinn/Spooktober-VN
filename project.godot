@@ -34,7 +34,11 @@ config/icon="res://UI/UI Assets/window_icon.png"
 [autoload]
 
 global="*res://Scripts/Global.gd"
-DialogueManager="*res://addons/dialogue_editor/DialogueManager.gd"
+DialogueManager="res://addons/dialogue_editor/DialogueManager.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [dialogue_editor]
 
@@ -94,6 +98,10 @@ dialogic_default_action={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[mono]
+
+project/assembly_name="Spooktober VN"
 
 [physics]
 

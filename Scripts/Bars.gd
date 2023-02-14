@@ -4,7 +4,7 @@ var textMouseInSlider = false
 var musicMouseInSlider = false
 var sfxMouseInSlider = false
 
-func _input(event):
+func _input(_event):
 	if(textMouseInSlider && Input.is_mouse_button_pressed(BUTTON_LEFT)):
 		setValue($TextSpeedLevel/TextureProgress)
 	if(musicMouseInSlider && Input.is_mouse_button_pressed(BUTTON_LEFT)):
@@ -15,7 +15,7 @@ func _input(event):
 
 func setValue(slider : TextureProgress):
 	slider.value = ratioInBody(slider) * slider.max_value
-	print(slider.name, " Speed ", slider.value)
+	#print(slider.name, " Speed ", slider.value)
 
 func ratioInBody(slider : TextureProgress):
 	var posClicked = get_local_mouse_position() - slider.rect_position
@@ -28,24 +28,24 @@ func ratioInBody(slider : TextureProgress):
 
 func _on_TextureProgress_mouse_entered():
 	textMouseInSlider = true
-	print("Text Speed Entered")
+	#print("Text Speed Entered")
 
 func _on_TextureProgress_mouse_exited():
 	textMouseInSlider = false
-	print("Text Speed Exited")
+	#print("Text Speed Exited")
 
 func _on_MusicProgress_mouse_entered():
 	musicMouseInSlider = true
-	print("Music Speed Entered")
+	#print("Music Speed Entered")
 
 func _on_MusicProgress_mouse_exited():
 	musicMouseInSlider = false
-	print("Music Speed Exited")
+	#print("Music Speed Exited")
 
 func _on_SFXProgress_mouse_entered():
 	sfxMouseInSlider = true
-	print("SFX Speed Entered")
+	#print("SFX Speed Entered")
 
 func _on_SFXProgress_mouse_exited():
 	sfxMouseInSlider = false
-	print("SFX Speed Exited")
+	#print("SFX Speed Exited")

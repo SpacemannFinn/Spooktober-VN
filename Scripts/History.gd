@@ -1,11 +1,9 @@
-extends Popup
+extends Control
 onready var global = get_node("/root/global")
 onready var dict = global.readJSON("res://SavedData/history.json")
 onready var histList = get_node("History/AllInfo")
 var count = 0
 
-func _ready():
-	popup()
 
 func _process(delta):
 	if dict == null:
@@ -13,7 +11,6 @@ func _process(delta):
 	if(count >= len(dict)):
 		return
 	loadHistory()
-	pass
 
 func loadHistory():
 	count = 0
@@ -23,7 +20,6 @@ func loadHistory():
 		var hists = histList.get_child(count)
 		hists.bbcode_text = hist
 		count+=1
-	pass
 
 
 func historyText():

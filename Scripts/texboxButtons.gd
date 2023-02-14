@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 
 
 # Declare member variables here. Examples:
@@ -16,5 +16,3 @@ func _ready():
 #	pass
 
 
-func _on_XButton_pressed():
-	print("X button pressed")

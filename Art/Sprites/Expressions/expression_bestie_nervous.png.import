@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expression_bestie_stressed.png-63262b945fba1b3e2595fc9f86acb15e.stex"
+path="res://.import/expression_bestie_nervous.png-649a4a1d93e98a959a701c29312b2918.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/expression_bestie_stressed.png"
-dest_files=[ "res://.import/expression_bestie_stressed.png-63262b945fba1b3e2595fc9f86acb15e.stex" ]
+source_file="res://Art/Sprites/Expressions/expression_bestie_nervous.png"
+dest_files=[ "res://.import/expression_bestie_nervous.png-649a4a1d93e98a959a701c29312b2918.stex" ]
 
 [params]
 

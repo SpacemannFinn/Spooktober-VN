@@ -1,8 +1,10 @@
 extends TextureRect
 var font
+onready var global = get_node("/root/global")
 
 func _ready():
-	$SettingsMenu/Labels/X/XButton.connect("menu_close", self, "_menu_closed")
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('Music'), (global._settings["settings"]["MusicVolume"] - 30))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index('SFX'), (global._settings["settings"]["SFXVolume"] - 30))
 	
 	$start/StartButton.connect("mouse_entered", self, "_on_mouse_entered", [$start])
 	$quit/QuitButton.connect("mouse_entered", self, "_on_mouse_entered", [$quit])
@@ -20,10 +22,10 @@ func _ready():
 	$Credits/nen.connect("mouse_exited", self, "_on_meta_hover_ended", [$Credits/nen])
 	$Credits/leaflet.connect("mouse_exited", self, "_on_meta_hover_ended", [$Credits/leaflet])
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		if $SaveLoadMenu.visible:
-			$SaveLoadMenu.hide()
+		if $LoadMenu.visible:
+			$LoadMenu.hide()
 		if $SettingsMenu.visible:
 			$SettingsMenu.hide()
 
@@ -40,11 +42,15 @@ func _on_mouse_exited(node):
 	font.update_changes()
 
 func _on_settings_pressed():
-	$SettingsMenu.show()
+	var settingsMenu = load("res://Scenes/SettingsMenu.tscn").instance()
+	get_tree().current_scene.add_child(settingsMenu)
+	
+	$SettingsMenu/Labels/X/XButton.connect("menu_close", self, "_menu_closed")
 
-func _menu_closed():
-	$SettingsMenu/Labels/X.modulate = Color("F4F4F4")
-	$SettingsMenu.hide()
+func _menu_closed(node):
+	var disconnectLabel = str(node)+"/Labels/X/XButton"
+	#get_node(disconnectLabel).disconnect("menu_close", self, "_menu_closed")
+	node.queue_free()
 
 func _on_StartButton_pressed():
 	var dir = Directory.new()
@@ -52,7 +58,11 @@ func _on_StartButton_pressed():
 	get_tree().change_scene("res://Scenes/VisualNovel.tscn")
 
 func _on_LoadButton_pressed():
-	$SaveLoadMenu.show()
+	var loadMenu = load("res://Scenes/Load.tscn").instance()
+	get_tree().current_scene.add_child(loadMenu)
+	
+	$LoadMenu/Labels/X/XButton.connect("menu_close", self, "_menu_closed")
+	
 
 func _on_QuitButton_pressed():
 	get_tree().quit()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/expression_bestie_shocked.png-3f64504994ff1c8938b684fd78e9e644.stex"
+path="res://.import/expression_bestie_shocked.png-58fb4f1fedd3a5b65af4c5e3e81e90c3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/expression_bestie_shocked.png"
-dest_files=[ "res://.import/expression_bestie_shocked.png-3f64504994ff1c8938b684fd78e9e644.stex" ]
+source_file="res://Art/Sprites/Expressions/expression_bestie_shocked.png"
+dest_files=[ "res://.import/expression_bestie_shocked.png-58fb4f1fedd3a5b65af4c5e3e81e90c3.stex" ]
 
 [params]
 
