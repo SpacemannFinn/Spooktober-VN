@@ -24,10 +24,10 @@ var count = 0
 
 func _ready():
 	print(self.start_id)
-	if current != null:
-		load_dialogue(current)
+	if !global.loadStart:
+		start(start_id)
 		return
-	start(start_id)
+	start(global.loadStart)
 
 func _input(event):
 	if active:
@@ -147,13 +147,17 @@ func _on_Exit_pressed():
 	pass # Replace with function body.
 
 func start(id):
-	if !dict:
-		printerr("No dialogue data!")
-		return
-	elif !dict['start'][id]:
-		printerr('Start ID not present')
-		return
-	current = dict['start'][id]
+	if !global.loadCurrent:
+		if !dict:
+			printerr("No dialogue data!")
+			return
+		elif !dict['start'][id]:
+			printerr('Start ID not present')
+			return
+		current = dict['start'][id]
+	else:
+		current = global.loadCurrent
+	print(current)
 	load_dialogue(current)
 
 func stop():

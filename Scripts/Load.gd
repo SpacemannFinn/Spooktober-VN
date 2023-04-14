@@ -3,10 +3,9 @@ onready var global = get_node("/root/global")
 onready var allinfo = $Savables/MarginContainer/AllInfo
 var temp
 
-
 func _ready():
 	_createSlots()
-	pass 
+	
 
 func _createSlots():
 	var pos = 0
@@ -30,7 +29,14 @@ func _createSlots():
 			pos += 1
 			print(pos)
 
-
+func _hydrateSlots(slot):
+	temp = global.loadGame()
+	var loaded = temp["saves"][slot]
+	global.loadStart = loaded["startid"]
+	global.loadCurrent =  loaded["currentDia"]
+	get_tree().change_scene(loaded["scene"])
+	print(loaded)
+	
 
 func newSaveElement(path, slot, dateFromSave, timeFromSave):
 	var dynamic_font = DynamicFont.new()
@@ -52,6 +58,7 @@ func newSaveElement(path, slot, dateFromSave, timeFromSave):
 	var save_hover = TextureButton.new()
 	save_hover.texture_hover = load("res://UI/UI Assets/files_screenshot_frame_hover.png")
 	save_hover.texture_pressed = load("res://UI/UI Assets/files_screenshot_frame_hover.png")
+	save_hover.connect("pressed", self, "_hydrateSlots", [slot])
 	
 	var info = Control.new()
 	info.rect_position = Vector2(0, -20)

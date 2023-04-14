@@ -30,7 +30,9 @@ var _saves = {
 	}
 }
 
-var newCurrent
+var loadStart
+var loadCurrent
+
 
 func readJSON(var filename: String):
 	var file = File.new()
@@ -131,8 +133,8 @@ func loadGame(slot = "1"):
 	save_file.open(SAVEPATH, File.READ)
 	tempLoad = parse_json(save_file.get_as_text())
 	
-	print(tempLoad["saves"]["1"])
+	#print(tempLoad)
 	#Info for a specific slot is loaded into the variable
-	_loadInfo = tempLoad["saves"][slot]
+	#_loadInfo = tempLoad["saves"][slot]
 	
 	return tempLoad
